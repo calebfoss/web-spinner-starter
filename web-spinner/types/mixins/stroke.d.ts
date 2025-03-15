@@ -1,4 +1,4 @@
-import { LinearGradient } from "..";
+import { LinearGradient } from "../classes/gradient";
 import { ConicalGradient, DrawStyle, RadialGradient } from "../classes/gradient";
 import { Canvas2DCanvasElement } from "../elements/canvas2d/canvas";
 import { Canvas2DBaseRenderable } from "../elements/canvas2d/renderable";

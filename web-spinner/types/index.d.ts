@@ -16,7 +16,6 @@ import { ConicalGradient, LinearGradient, RadialGradient } from "./classes/gradi
 import { Canvas2DElement } from "./elements/canvas2d/element";
 import { Shadow } from "./classes/shadow";
 export type CSSLengthUnit = (typeof Units.size)[keyof typeof Units.size];
-export declare const NONE = "none";
 declare function createMultiple<R extends Node>(count: number, generator: (index: number) => R): R[];
 declare global {
     interface CustomElementRegistry {

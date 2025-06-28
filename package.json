@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "web-spinner": "file:web-spinner"
+  }
+}

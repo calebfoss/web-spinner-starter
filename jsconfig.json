@@ -2,7 +2,7 @@
   "include": ["./web-spinner/types", "*.js"],
   "compilerOptions": {
     "paths": {
-      "webSpinner": ["./web-spinner/types"]
+      "web-spinner": ["./web-spinner/types/index.d.ts"]
     }
   }
 }

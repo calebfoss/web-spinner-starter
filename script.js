@@ -1,5 +1,5 @@
 import {
-  createCanvas,
+  createRoot,
   Color,
   Vector2D,
   Angle,
@@ -7,8 +7,10 @@ import {
   LinearGradient,
   RadialGradient,
   Shadow,
-} from "webSpinner";
+} from "web-spinner";
 
-const canvas = createCanvas({});
+// Create a root element to contain the entire project
+const root = createRoot();
 
-document.body.appendChild(canvas);
+// Create a 2D Canvas element
+const canvas = root.canvas2D();

@@ -1,76 +1,21 @@
-import { Canvas2DBaseRenderable } from "../elements/visual/renderable";
-import { Canvas2DCanvasElement } from "../elements/visual/canvas";
-export declare const fontSizeUnits: {
-    readonly capHeight: "cap";
-    readonly characterWidth: "ch";
-    readonly calculated: "em";
-    readonly xHeight: "ex";
-    readonly characterHeight: "ic";
-    readonly lineHeight: "lh";
-    readonly rootCapHeight: "rcap";
-    readonly rootCharacterWidth: "rch";
-    readonly rootSize: "rem";
-    readonly rootXHeight: "rex";
-    readonly rootCharacterHeight: "ic";
-    readonly rootLineHeight: "rlh";
-    readonly centimeters: "cm";
-    readonly millimeters: "mm";
-    readonly quarterMillimeters: "Q";
-    readonly inches: "in";
-    readonly picas: "pc";
-    readonly points: "pt";
-    readonly pixels: "px";
-    readonly percentViewportHeight: "vh";
-    readonly percentViewportWidth: "vw";
-};
-export declare function useFont<B extends typeof Canvas2DBaseRenderable>(Base: B): {
+import { Vector2D } from "../classes/vector2d";
+import { ClickTracker } from "../classes/click";
+import { KeyboardTracker } from "../classes/keyboard";
+import { MouseTracker } from "../classes/mouse";
+import { C2DBase } from "./c2dBase";
+import { DrawStyle } from "../classes/gradient";
+declare const Canvas2DCanvasElement_base: {
     new (...args: any[]): {
-        "__#37@#fontFamily": string | null;
-        "__#37@#kerning": CanvasFontKerning | null;
-        "__#37@#size": number | null;
-        "__#37@#sizeUnit": "cm" | "mm" | "Q" | "in" | "pc" | "pt" | "px" | "vh" | "vw" | "em" | "cap" | "ch" | "ex" | "ic" | "lh" | "rcap" | "rch" | "rem" | "rex" | "rlh";
-        "__#37@#stretch": CanvasFontStretch | null;
-        "__#37@#fontStyle": ((/*elided*/ any & B)["style"][keyof (/*elided*/ any & B)["style"]] | `oblique ${number}deg` | `oblique ${number}rad` | `oblique ${number}grad` | `oblique ${number}turn`) | null;
-        attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
-        fontFamily: string | null;
-        fontStyle: ((/*elided*/ any & B)["style"][keyof (/*elided*/ any & B)["style"]] | `oblique ${number}deg` | `oblique ${number}rad` | `oblique ${number}grad` | `oblique ${number}turn`) | null;
-        kerning: CanvasFontKerning | null;
-        render(canvas2D: Canvas2DCanvasElement): void;
-        /**
-         * Font size using the current sizeUnit. When set to null, the last rendered
-         * element's setting is used.
-         *
-         * @attr
-         * @reflect
-         */
-        size: number | null;
-        /**
-         * Unit for font size: "cm" | "mm" | "Q" | "in" | "pc" | "pt" | "px" | "vh" |
-         * "vw" | "cap" | "ch" | "em" | "ex" | "ic" | "lh" | "rcap" | "rch" | "rem" |
-         * "rex" | "rlh"
-         *
-         */
-        sizeUnit: "cm" | "mm" | "Q" | "in" | "pc" | "pt" | "px" | "vh" | "vw" | "em" | "cap" | "ch" | "ex" | "ic" | "lh" | "rcap" | "rch" | "rem" | "rex" | "rlh";
-        readonly sizeString: string;
-        stretch: CanvasFontStretch | null;
-        "__#29@#changedSinceRender": boolean;
-        "__#29@#clickListeners": Set<EventListenerOrEventListenerObject>;
-        "__#29@#localMouse": import("../classes/mouse").MouseData;
-        "__#29@#mouseListeners": Set<EventListenerOrEventListenerObject>;
-        "__#29@#shadow": import("..").Shadow | null;
-        addEventListener(type: keyof HTMLElementEventMap, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        renderConicalGradient(context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient): CanvasGradient;
-        renderLinearGradient(context: CanvasRenderingContext2D, gradient: import("..").LinearGradient): CanvasGradient;
-        renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("..").RadialGradient): CanvasGradient;
-        removeEventListener(type: keyof HTMLElementEventMap, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        readonly changedSinceRender: boolean;
-        "__#29@#handleClick"(canvas2D: Canvas2DCanvasElement): void;
-        "__#29@#handleMouse"(canvas2D: Canvas2DCanvasElement): void;
-        registerChange<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]): void;
-        renderChildren(canvas2D: Canvas2DCanvasElement): void;
-        afterRender(canvas2D: Canvas2DCanvasElement): void;
-        "__#29@#shadowChangeListener": ChangeListener<import("..").Shadow>;
-        shadow: import("..").Shadow | null;
+        bezier(options?: Options<import("./bezier").Canvas2DBezier>): import("./bezier").Canvas2DBezier;
+        ellipse(options?: Options<import("./ellipse").Canvas2DEllipse>): import("./ellipse").Canvas2DEllipse;
+        image(options?: Options<import("./image").Canvas2DImage>): import("./image").Canvas2DImage;
+        multiple(callback: (index: number) => Node | undefined): Node[];
+        multiple(count: number, callback: (index: number) => Node): Node[];
+        line(options?: Options<import("./line").Canvas2DLine>): import("./line").Canvas2DLine;
+        rectangle(options?: Options<import("./rectangle").Canvas2DRectangle>): import("./rectangle").Canvas2DRectangle;
+        shape(options?: Options<import("./shape").Canvas2DShape>): import("./shape").Canvas2DShape;
+        text(options?: Options<import("./text").Canvas2DText>): import("./text").Canvas2DText;
+        video(options?: Options<import("./video").Canvas2DVideo>): import("./video").Canvas2DVideo;
         "__#9@#eventProxy": {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
             readonly fullscreenerror: (listener: TypedEventListener<"fullscreenerror">) => void;
@@ -288,8 +233,10 @@ export declare function useFont<B extends typeof Canvas2DBaseRenderable>(Base: B
             readonly webkittransitionend: (listener: TypedEventListener<"webkittransitionend">) => void;
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
-        scaleByPixelRatio(vector: import("..").Vector2D): import("..").Vector2D;
-        createChild<E extends typeof import("../elements/mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
+        scaleByPixelRatio(vector: Vector2D): Vector2D;
+        attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
+        createChild<E extends typeof import("./mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
+        registerChange<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]): void;
         accessKey: string;
         readonly accessKeyLabel: string;
         autocapitalize: string;
@@ -315,6 +262,10 @@ export declare function useFont<B extends typeof Canvas2DBaseRenderable>(Base: B
         hidePopover(): void;
         showPopover(): void;
         togglePopover(force?: boolean): boolean;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
         readonly attributes: NamedNodeMap;
         readonly classList: DOMTokenList;
         className: string;
@@ -621,37 +572,73 @@ export declare function useFont<B extends typeof Canvas2DBaseRenderable>(Base: B
         blur(): void;
         focus(options?: FocusOptions): void;
     };
-    observedAttributes: string[];
-    sizeUnit: {
-        readonly capHeight: "cap";
-        readonly characterWidth: "ch";
-        readonly calculated: "em";
-        readonly xHeight: "ex";
-        readonly characterHeight: "ic";
-        readonly lineHeight: "lh";
-        readonly rootCapHeight: "rcap";
-        readonly rootCharacterWidth: "rch";
-        readonly rootSize: "rem";
-        readonly rootXHeight: "rex";
-        readonly rootCharacterHeight: "ic";
-        readonly rootLineHeight: "rlh";
-        readonly centimeters: "cm";
-        readonly millimeters: "mm";
-        readonly quarterMillimeters: "Q";
-        readonly inches: "in";
-        readonly picas: "pc";
-        readonly points: "pt";
-        readonly pixels: "px";
-        readonly percentViewportHeight: "vh";
-        readonly percentViewportWidth: "vw";
-    };
-    stretch: {
-        [key: string]: CanvasFontStretch;
-    };
-    style: {
-        readonly normal: "normal";
-        readonly italic: "italic";
-        readonly oblique: "oblique";
-    };
     tag: string;
-} & B;
+    observedAttributes: string[];
+} & typeof C2DBase;
+export declare class Canvas2DCanvasElement extends Canvas2DCanvasElement_base {
+    #private;
+    static observedAttributes: string[];
+    static get tag(): string;
+    constructor();
+    /**
+     * @private
+     */
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions | undefined): void;
+    /**
+     * True if the canvas is rendering animation.
+     */
+    get animating(): boolean;
+    attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
+    /**
+     * At the beginning of each frame, the canvas renders its background using
+     * this style. It may be a Color or Gradient. When set to "none", the canvas
+     * will not render a background. This will result in the next frame being
+     * rendered on top of the last frame's contents.
+     *
+     * @attr
+     * @reflect
+     */
+    get background(): DrawStyle;
+    set background(value: DrawStyle);
+    /**
+     * Center point of the canvas.
+     */
+    get center(): Vector2D;
+    connectedCallback(): void;
+    get keyDown(): boolean;
+    get domCanvas(): HTMLCanvasElement;
+    get clicked(): boolean;
+    get clickPosition(): ClickTracker;
+    get context(): CanvasRenderingContext2D;
+    /**
+     * Time passed the previous and current frame.
+     */
+    get deltaTime(): number;
+    get everyFrame(): Updater | null;
+    set everyFrame(updater: Updater | null);
+    get frame(): number;
+    keyHeld(...args: Parameters<KeyboardTracker["keyHeld"]>): boolean;
+    keyPreviouslyHeld(...args: Parameters<KeyboardTracker["keyPreviouslyHeld"]>): boolean;
+    get lastKey(): string;
+    get mouse(): MouseTracker;
+    queueRender(): void;
+    /**
+     * The width of the canvas element in pixels divided by the device's pixel ratio.
+     *
+     * @attr
+     * @reflect
+     */
+    get width(): number;
+    set width(value: number);
+    /**
+     * The height of the canvas element in pixels divided by the device's pixel ratio.
+     *
+     * @attr
+     * @reflect
+     */
+    get height(): number;
+    set height(value: number);
+    renderOn(eventName: keyof HTMLElementEventMap): void;
+    waitFor(element: Element, eventName?: keyof HTMLElementEventMap): void;
+}
+export {};

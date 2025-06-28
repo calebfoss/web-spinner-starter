@@ -1,31 +1,30 @@
-import { Canvas2DCanvasElement } from "./elements/canvas2d/canvas";
-import { Canvas2DRectangle, Canvas2DShapeRectangle } from "./elements/canvas2d/rectangle";
+import { Canvas2DCanvasElement } from "./elements/visual/canvas";
+import { Canvas2DRectangle, Canvas2DShapeRectangle } from "./elements/visual/rectangle";
 import { Color } from "./classes/color";
 import { Vector2D } from "./classes/vector2d";
 import { Angle } from "./classes/angle";
-import { Canvas2DText } from "./elements/canvas2d/text";
+import { Canvas2DText } from "./elements/visual/text";
 import { Units } from "./classes/units";
 import { State, createState } from "./classes/state";
-import { Canvas2DLine, Canvas2DShapeLine } from "./elements/canvas2d/line";
-import { Canvas2DShape } from "./elements/canvas2d/shape";
-import { Canvas2DEllipse, Canvas2DShapeEllipse } from "./elements/canvas2d/ellipse";
-import { Canvas2DBezier, Canvas2DShapeBezier } from "./elements/canvas2d/bezier";
-import { Canvas2DImage } from "./elements/canvas2d/image";
-import { Canvas2DVideo } from "./elements/canvas2d/video";
+import { Canvas2DLine, Canvas2DShapeLine } from "./elements/visual/line";
+import { Canvas2DShape } from "./elements/visual/shape";
+import { Canvas2DEllipse, Canvas2DShapeEllipse } from "./elements/visual/ellipse";
+import { Canvas2DBezier, Canvas2DShapeBezier } from "./elements/visual/bezier";
+import { Canvas2DImage } from "./elements/visual/image";
+import { Canvas2DVideo } from "./elements/visual/video";
 import { ConicalGradient, LinearGradient, RadialGradient } from "./classes/gradient";
-import { Canvas2DElement } from "./elements/canvas2d/element";
+import { C2DBase } from "./elements/visual/c2dBase";
 import { Shadow } from "./classes/shadow";
+import { createRoot } from "./elements/document/domBase";
+import { BorderRadius } from "./classes/borderRadius";
+import { Random } from "./classes/random";
 export type CSSLengthUnit = (typeof Units.size)[keyof typeof Units.size];
 declare function createMultiple<R extends Node>(count: number, generator: (index: number) => R): R[];
 declare global {
     interface CustomElementRegistry {
-        define<E extends typeof Canvas2DElement>(tag: E["tag"], ElementClass: E): void;
+        define<E extends typeof C2DBase>(tag: E["tag"], ElementClass: E): void;
     }
 }
-export declare function createCustomElement<E extends typeof HTMLElement & {
-    tag: string;
-}>(ElementClass: E, options?: Options<InstanceType<E>>): InstanceType<E>;
-declare function createCanvas(options?: Options<Canvas2DCanvasElement>): Canvas2DCanvasElement;
 export type WebSpinnerElement = {
     Canvas2DCanvasElement: Canvas2DCanvasElement;
     Canvas2DBezier: Canvas2DBezier;
@@ -41,4 +40,4 @@ export type WebSpinnerElement = {
     Canvas2DText: Canvas2DText;
     Canvas2DVideo: Canvas2DVideo;
 };
-export { createCanvas, createMultiple, Color, Vector2D, Angle, State, ConicalGradient, LinearGradient, RadialGradient, Shadow, createState, };
+export { createMultiple, BorderRadius, Color, Vector2D, Angle, State, ConicalGradient, LinearGradient, RadialGradient, Random, Shadow, createState, createRoot, };

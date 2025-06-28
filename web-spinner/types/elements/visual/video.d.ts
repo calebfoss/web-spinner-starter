@@ -1,37 +1,31 @@
-import { Canvas2DCanvasElement } from "../elements/visual/canvas";
-import { C2DTransformed } from "./transform";
-export declare function rendersVisualMedia<B extends C2DTransformed, T extends "img" | "video">(Base: B, mediaTag: T): {
+import { C2DStandaloneTransformed } from "../../mixins/transform";
+import { HTMLElementController } from "../document/domBase";
+declare const Canvas2DVideo_base: {
     new (...args: any[]): {
-        "__#36@#mediaElement": HTMLElementTagNameMap[T];
+        "__#36@#mediaElement": HTMLVideoElement;
         "__#36@#widthSet": boolean;
         "__#36@#heightSet": boolean;
         attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
         connectedCallback(): void;
-        readonly mediaElement: HTMLElementTagNameMap[T];
-        /**
-         * URL or local path to the media file source for this element.
-         *
-         * @attr
-         * @reflect
-         */
+        readonly mediaElement: HTMLVideoElement;
         source: string;
-        render(canvas2D: Canvas2DCanvasElement): void;
+        render(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
         readonly mediaWidth: number;
         width: number;
         readonly mediaHeight: number;
         height: number;
-        renderConicalGradient: ((context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient) => CanvasGradient);
-        renderLinearGradient: ((context: CanvasRenderingContext2D, gradient: import("..").LinearGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("..").LinearGradient) => CanvasGradient);
+        renderConicalGradient: ((context: CanvasRenderingContext2D, gradient: import("../..").ConicalGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("../..").ConicalGradient) => CanvasGradient);
+        renderLinearGradient: ((context: CanvasRenderingContext2D, gradient: import("../..").LinearGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("../..").LinearGradient) => CanvasGradient);
         "__#19@#origin": "center" | "topLeft";
-        readonly topLeft: import("..").Vector2D;
-        readonly topRight: import("..").Vector2D;
-        readonly center: import("..").Vector2D;
-        readonly bottomLeft: import("..").Vector2D;
-        readonly bottomRight: import("..").Vector2D;
+        readonly topLeft: import("../..").Vector2D;
+        readonly topRight: import("../..").Vector2D;
+        readonly center: import("../..").Vector2D;
+        readonly bottomLeft: import("../..").Vector2D;
+        readonly bottomRight: import("../..").Vector2D;
         origin: "center" | "topLeft";
         "__#18@#width": number;
         "__#18@#height": number;
-        createChild<E extends typeof import("../elements/mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
+        createChild<E extends typeof import("../mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
         registerChange: (<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]) => void) & (<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]) => void);
         accessKey: string;
         readonly accessKeyLabel: string;
@@ -158,21 +152,21 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
         readonly parentNode: ParentNode | null;
         readonly previousSibling: ChildNode | null;
         textContent: string | null;
-        appendChild<T_1 extends Node>(node: T_1): T_1;
+        appendChild<T extends Node>(node: T): T;
         cloneNode(deep?: boolean): Node;
         compareDocumentPosition(other: Node): number;
         contains(other: Node | null): boolean;
         getRootNode(options?: GetRootNodeOptions): Node;
         hasChildNodes(): boolean;
-        insertBefore<T_1 extends Node>(node: T_1, child: Node | null): T_1;
+        insertBefore<T extends Node>(node: T, child: Node | null): T;
         isDefaultNamespace(namespace: string | null): boolean;
         isEqualNode(otherNode: Node | null): boolean;
         isSameNode(otherNode: Node | null): boolean;
         lookupNamespaceURI(prefix: string | null): string | null;
         lookupPrefix(namespace: string | null): string | null;
         normalize(): void;
-        removeChild<T_1 extends Node>(child: T_1): T_1;
-        replaceChild<T_1 extends Node>(node: Node, child: T_1): T_1;
+        removeChild<T extends Node>(child: T): T;
+        replaceChild<T extends Node>(node: Node, child: T): T;
         readonly ELEMENT_NODE: 1;
         readonly ATTRIBUTE_NODE: 2;
         readonly TEXT_NODE: 3;
@@ -371,23 +365,23 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
         tabIndex: number;
         blur(): void;
         focus(options?: FocusOptions): void;
-        "__#27@#offset": import("..").Vector2D;
+        "__#27@#offset": import("../..").Vector2D;
         moveOffset(x: number, y: number): void;
-        "__#27@#offsetChangeListener": ChangeListener<import("../classes/vector2d").Vector2DBase>;
-        offset: import("..").Vector2D;
+        "__#27@#offsetChangeListener": ChangeListener<import("../../classes/vector2d").Vector2DBase>;
+        offset: import("../..").Vector2D;
         "__#29@#changedSinceRender": boolean;
         "__#29@#clickListeners": Set<EventListenerOrEventListenerObject>;
-        "__#29@#localMouse": import("../classes/mouse").MouseData;
+        "__#29@#localMouse": import("../../classes/mouse").MouseData;
         "__#29@#mouseListeners": Set<EventListenerOrEventListenerObject>;
-        "__#29@#shadow": import("..").Shadow | null;
-        renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("..").RadialGradient): CanvasGradient;
+        "__#29@#shadow": import("../..").Shadow | null;
+        renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("../..").RadialGradient): CanvasGradient;
         readonly changedSinceRender: boolean;
-        "__#29@#handleClick"(canvas2D: Canvas2DCanvasElement): void;
-        "__#29@#handleMouse"(canvas2D: Canvas2DCanvasElement): void;
-        renderChildren(canvas2D: Canvas2DCanvasElement): void;
-        afterRender: ((canvas2D: Canvas2DCanvasElement) => void) & ((canvas2D: Canvas2DCanvasElement) => void);
-        "__#29@#shadowChangeListener": ChangeListener<import("..").Shadow>;
-        shadow: import("..").Shadow | null;
+        "__#29@#handleClick"(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
+        "__#29@#handleMouse"(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
+        renderChildren(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
+        afterRender: ((canvas2D: import("./canvas").Canvas2DCanvasElement) => void) & ((canvas2D: import("./canvas").Canvas2DCanvasElement) => void);
+        "__#29@#shadowChangeListener": ChangeListener<import("../..").Shadow>;
+        shadow: import("../..").Shadow | null;
         "__#9@#eventProxy": {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
             readonly fullscreenerror: (listener: TypedEventListener<"fullscreenerror">) => void;
@@ -496,7 +490,7 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
         "__#9@#everyFrame": Updater | null;
-        readonly canvas: Canvas2DCanvasElement;
+        readonly canvas: import("./canvas").Canvas2DCanvasElement;
         everyFrame: Updater | null;
         readonly listen: {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
@@ -605,27 +599,140 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
             readonly webkittransitionend: (listener: TypedEventListener<"webkittransitionend">) => void;
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
-        scaleByPixelRatio(vector: import("..").Vector2D): import("..").Vector2D;
-        "__#22@#anchor": import("..").Vector2D;
-        "__#22@#angle": import("..").Angle;
-        "__#22@#angularVelocity": import("..").Angle;
-        "__#22@#scale": import("..").Vector2D;
-        "__#22@#velocity": import("..").Vector2D;
+        scaleByPixelRatio(vector: import("../..").Vector2D): import("../..").Vector2D;
+        "__#22@#anchor": import("../..").Vector2D;
+        "__#22@#angle": import("../..").Angle;
+        "__#22@#angularVelocity": import("../..").Angle;
+        "__#22@#scale": import("../..").Vector2D;
+        "__#22@#velocity": import("../..").Vector2D;
         "__#22@#angleChangeListener": ChangeListener<number>;
-        angle: import("..").Angle;
+        angle: import("../..").Angle;
         "__#22@#angularVelocityChangedTime": number;
-        angularVelocity: import("..").Angle;
-        anchor: import("..").Vector2D;
-        "__#22@#anchorChangeListener": ChangeListener<import("../classes/vector2d").Vector2DBase>;
+        angularVelocity: import("../..").Angle;
+        anchor: import("../..").Vector2D;
+        "__#22@#anchorChangeListener": ChangeListener<import("../../classes/vector2d").Vector2DBase>;
         _applyMovement(deltaTime: number): void;
         moveAnchor(x: number, y: number): void;
-        rotateClockwise(angle: import("..").Angle): void;
-        rotateCounterclockwise(angle: import("..").Angle): void;
-        get scale(): import("..").Vector2D;
-        set scale(value: import("..").Vector2D | number);
+        rotateClockwise(angle: import("../..").Angle): void;
+        rotateCounterclockwise(angle: import("../..").Angle): void;
+        get scale(): import("../..").Vector2D;
+        set scale(value: import("../..").Vector2D | number);
         "__#22@#velocityChangedTime": number;
-        velocity: import("..").Vector2D;
+        velocity: import("../..").Vector2D;
     };
     observedAttributes: string[];
     tag: string;
-} & B;
+} & typeof C2DStandaloneTransformed;
+export declare class Canvas2DVideo extends Canvas2DVideo_base {
+    #private;
+    static get tag(): string;
+    connectedCallback(): void;
+    play(): Promise<void>;
+    pause(): void;
+    get paused(): boolean;
+    togglePlay(): void;
+}
+declare const HTMLVideoWrapper_base: {
+    new (...args: any[]): {
+        "__#39@#element": HTMLVideoElement;
+        canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+        createWrappedChild<T extends keyof HTMLElementTagNameMap, W extends {
+            new (...args: any[]): {
+                "__#39@#element": HTMLElementTagNameMap[T];
+                canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                createWrappedChild<T_1 extends keyof HTMLElementTagNameMap, W_1 extends {
+                    new (...args: any[]): {
+                        "__#39@#element": HTMLElementTagNameMap[T_1];
+                        canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                        createWrappedChild<T_2 extends keyof HTMLElementTagNameMap, W_2 extends {
+                            new (...args: any[]): {
+                                "__#39@#element": HTMLElementTagNameMap[T_2];
+                                canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                createWrappedChild<T_3 extends keyof HTMLElementTagNameMap, W_3 extends {
+                                    new (...args: any[]): {
+                                        "__#39@#element": HTMLElementTagNameMap[T_3];
+                                        canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                        createWrappedChild<T_4 extends keyof HTMLElementTagNameMap, W_4 extends {
+                                            new (...args: any[]): {
+                                                "__#39@#element": HTMLElementTagNameMap[T_4];
+                                                canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                                createWrappedChild<T_5 extends keyof HTMLElementTagNameMap, W_5 extends {
+                                                    new (...args: any[]): {
+                                                        "__#39@#element": HTMLElementTagNameMap[T_5];
+                                                        canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                                        createWrappedChild<T_6 extends keyof HTMLElementTagNameMap, W_6 extends {
+                                                            new (...args: any[]): {
+                                                                "__#39@#element": HTMLElementTagNameMap[T_6];
+                                                                canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                                                createWrappedChild<T_7 extends keyof HTMLElementTagNameMap, W_7 extends {
+                                                                    new (...args: any[]): {
+                                                                        "__#39@#element": HTMLElementTagNameMap[T_7];
+                                                                        canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                                                        createWrappedChild<T_8 extends keyof HTMLElementTagNameMap, W_8 extends {
+                                                                            new (...args: any[]): {
+                                                                                "__#39@#element": HTMLElementTagNameMap[T_8];
+                                                                                canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                                                                createWrappedChild<T_9 extends keyof HTMLElementTagNameMap, W_9 extends {
+                                                                                    new (...args: any[]): {
+                                                                                        "__#39@#element": HTMLElementTagNameMap[T_9];
+                                                                                        canvas2D(options?: Options<import("./canvas").Canvas2DCanvasElement>): import("./canvas").Canvas2DCanvasElement;
+                                                                                        createWrappedChild<T_10 extends keyof HTMLElementTagNameMap, W_10 extends /*elided*/ any>(WrapperConstructor: W_10, options?: Partial<Writeable<HTMLElementController<T_10, InstanceType<W_10>>>> | undefined): HTMLElementController<T_10, InstanceType<W_10>>;
+                                                                                        readonly element: HTMLElementTagNameMap[T_9];
+                                                                                        style: CSSStyleDeclaration;
+                                                                                        svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                                                                    };
+                                                                                }>(WrapperConstructor: W_9, options?: Partial<Writeable<HTMLElementController<T_9, InstanceType<W_9>>>> | undefined): HTMLElementController<T_9, InstanceType<W_9>>;
+                                                                                readonly element: HTMLElementTagNameMap[T_8];
+                                                                                style: CSSStyleDeclaration;
+                                                                                svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                                                            };
+                                                                        }>(WrapperConstructor: W_8, options?: Partial<Writeable<HTMLElementController<T_8, InstanceType<W_8>>>> | undefined): HTMLElementController<T_8, InstanceType<W_8>>;
+                                                                        readonly element: HTMLElementTagNameMap[T_7];
+                                                                        style: CSSStyleDeclaration;
+                                                                        svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                                                    };
+                                                                }>(WrapperConstructor: W_7, options?: Partial<Writeable<HTMLElementController<T_7, InstanceType<W_7>>>> | undefined): HTMLElementController<T_7, InstanceType<W_7>>;
+                                                                readonly element: HTMLElementTagNameMap[T_6];
+                                                                style: CSSStyleDeclaration;
+                                                                svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                                            };
+                                                        }>(WrapperConstructor: W_6, options?: Partial<Writeable<HTMLElementController<T_6, InstanceType<W_6>>>> | undefined): HTMLElementController<T_6, InstanceType<W_6>>;
+                                                        readonly element: HTMLElementTagNameMap[T_5];
+                                                        style: CSSStyleDeclaration;
+                                                        svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                                    };
+                                                }>(WrapperConstructor: W_5, options?: Partial<Writeable<HTMLElementController<T_5, InstanceType<W_5>>>> | undefined): HTMLElementController<T_5, InstanceType<W_5>>;
+                                                readonly element: HTMLElementTagNameMap[T_4];
+                                                style: CSSStyleDeclaration;
+                                                svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                            };
+                                        }>(WrapperConstructor: W_4, options?: Partial<Writeable<HTMLElementController<T_4, InstanceType<W_4>>>> | undefined): HTMLElementController<T_4, InstanceType<W_4>>;
+                                        readonly element: HTMLElementTagNameMap[T_3];
+                                        style: CSSStyleDeclaration;
+                                        svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                                    };
+                                }>(WrapperConstructor: W_3, options?: Partial<Writeable<HTMLElementController<T_3, InstanceType<W_3>>>> | undefined): HTMLElementController<T_3, InstanceType<W_3>>;
+                                readonly element: HTMLElementTagNameMap[T_2];
+                                style: CSSStyleDeclaration;
+                                svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                            };
+                        }>(WrapperConstructor: W_2, options?: Partial<Writeable<HTMLElementController<T_2, InstanceType<W_2>>>> | undefined): HTMLElementController<T_2, InstanceType<W_2>>;
+                        readonly element: HTMLElementTagNameMap[T_1];
+                        style: CSSStyleDeclaration;
+                        svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+                    };
+                }>(WrapperConstructor: W_1, options?: Partial<Writeable<HTMLElementController<T_1, InstanceType<W_1>>>> | undefined): HTMLElementController<T_1, InstanceType<W_1>>;
+                readonly element: HTMLElementTagNameMap[T];
+                style: CSSStyleDeclaration;
+                svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+            };
+        }>(WrapperConstructor: W, options?: Partial<Writeable<HTMLElementController<T, InstanceType<W>>>> | undefined): HTMLElementController<T, InstanceType<W>>;
+        readonly element: HTMLVideoElement;
+        style: CSSStyleDeclaration;
+        svg(options?: Options<import("./svgSVG").SVGSVGController>): import("./svgSVG").SVGSVGController;
+    };
+};
+export declare class HTMLVideoWrapper extends HTMLVideoWrapper_base {
+}
+export type HTMLVideoController = HTMLElementController<"video", HTMLVideoWrapper>;
+export {};

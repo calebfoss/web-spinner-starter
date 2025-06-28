@@ -1,37 +1,30 @@
-import { Canvas2DCanvasElement } from "../elements/visual/canvas";
-import { C2DTransformed } from "./transform";
-export declare function rendersVisualMedia<B extends C2DTransformed, T extends "img" | "video">(Base: B, mediaTag: T): {
+import { C2DStandaloneTransformed } from "../../mixins/transform";
+declare const Canvas2DImage_base: {
     new (...args: any[]): {
-        "__#36@#mediaElement": HTMLElementTagNameMap[T];
+        "__#36@#mediaElement": HTMLImageElement;
         "__#36@#widthSet": boolean;
         "__#36@#heightSet": boolean;
         attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
         connectedCallback(): void;
-        readonly mediaElement: HTMLElementTagNameMap[T];
-        /**
-         * URL or local path to the media file source for this element.
-         *
-         * @attr
-         * @reflect
-         */
+        readonly mediaElement: HTMLImageElement;
         source: string;
-        render(canvas2D: Canvas2DCanvasElement): void;
+        render(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
         readonly mediaWidth: number;
         width: number;
         readonly mediaHeight: number;
         height: number;
-        renderConicalGradient: ((context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient) => CanvasGradient);
-        renderLinearGradient: ((context: CanvasRenderingContext2D, gradient: import("..").LinearGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("..").LinearGradient) => CanvasGradient);
+        renderConicalGradient: ((context: CanvasRenderingContext2D, gradient: import("../..").ConicalGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("../..").ConicalGradient) => CanvasGradient);
+        renderLinearGradient: ((context: CanvasRenderingContext2D, gradient: import("../..").LinearGradient) => CanvasGradient) & ((context: CanvasRenderingContext2D, gradient: import("../..").LinearGradient) => CanvasGradient);
         "__#19@#origin": "center" | "topLeft";
-        readonly topLeft: import("..").Vector2D;
-        readonly topRight: import("..").Vector2D;
-        readonly center: import("..").Vector2D;
-        readonly bottomLeft: import("..").Vector2D;
-        readonly bottomRight: import("..").Vector2D;
+        readonly topLeft: import("../..").Vector2D;
+        readonly topRight: import("../..").Vector2D;
+        readonly center: import("../..").Vector2D;
+        readonly bottomLeft: import("../..").Vector2D;
+        readonly bottomRight: import("../..").Vector2D;
         origin: "center" | "topLeft";
         "__#18@#width": number;
         "__#18@#height": number;
-        createChild<E extends typeof import("../elements/mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
+        createChild<E extends typeof import("../mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
         registerChange: (<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]) => void) & (<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]) => void);
         accessKey: string;
         readonly accessKeyLabel: string;
@@ -158,21 +151,21 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
         readonly parentNode: ParentNode | null;
         readonly previousSibling: ChildNode | null;
         textContent: string | null;
-        appendChild<T_1 extends Node>(node: T_1): T_1;
+        appendChild<T extends Node>(node: T): T;
         cloneNode(deep?: boolean): Node;
         compareDocumentPosition(other: Node): number;
         contains(other: Node | null): boolean;
         getRootNode(options?: GetRootNodeOptions): Node;
         hasChildNodes(): boolean;
-        insertBefore<T_1 extends Node>(node: T_1, child: Node | null): T_1;
+        insertBefore<T extends Node>(node: T, child: Node | null): T;
         isDefaultNamespace(namespace: string | null): boolean;
         isEqualNode(otherNode: Node | null): boolean;
         isSameNode(otherNode: Node | null): boolean;
         lookupNamespaceURI(prefix: string | null): string | null;
         lookupPrefix(namespace: string | null): string | null;
         normalize(): void;
-        removeChild<T_1 extends Node>(child: T_1): T_1;
-        replaceChild<T_1 extends Node>(node: Node, child: T_1): T_1;
+        removeChild<T extends Node>(child: T): T;
+        replaceChild<T extends Node>(node: Node, child: T): T;
         readonly ELEMENT_NODE: 1;
         readonly ATTRIBUTE_NODE: 2;
         readonly TEXT_NODE: 3;
@@ -371,23 +364,23 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
         tabIndex: number;
         blur(): void;
         focus(options?: FocusOptions): void;
-        "__#27@#offset": import("..").Vector2D;
+        "__#27@#offset": import("../..").Vector2D;
         moveOffset(x: number, y: number): void;
-        "__#27@#offsetChangeListener": ChangeListener<import("../classes/vector2d").Vector2DBase>;
-        offset: import("..").Vector2D;
+        "__#27@#offsetChangeListener": ChangeListener<import("../../classes/vector2d").Vector2DBase>;
+        offset: import("../..").Vector2D;
         "__#29@#changedSinceRender": boolean;
         "__#29@#clickListeners": Set<EventListenerOrEventListenerObject>;
-        "__#29@#localMouse": import("../classes/mouse").MouseData;
+        "__#29@#localMouse": import("../../classes/mouse").MouseData;
         "__#29@#mouseListeners": Set<EventListenerOrEventListenerObject>;
-        "__#29@#shadow": import("..").Shadow | null;
-        renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("..").RadialGradient): CanvasGradient;
+        "__#29@#shadow": import("../..").Shadow | null;
+        renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("../..").RadialGradient): CanvasGradient;
         readonly changedSinceRender: boolean;
-        "__#29@#handleClick"(canvas2D: Canvas2DCanvasElement): void;
-        "__#29@#handleMouse"(canvas2D: Canvas2DCanvasElement): void;
-        renderChildren(canvas2D: Canvas2DCanvasElement): void;
-        afterRender: ((canvas2D: Canvas2DCanvasElement) => void) & ((canvas2D: Canvas2DCanvasElement) => void);
-        "__#29@#shadowChangeListener": ChangeListener<import("..").Shadow>;
-        shadow: import("..").Shadow | null;
+        "__#29@#handleClick"(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
+        "__#29@#handleMouse"(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
+        renderChildren(canvas2D: import("./canvas").Canvas2DCanvasElement): void;
+        afterRender: ((canvas2D: import("./canvas").Canvas2DCanvasElement) => void) & ((canvas2D: import("./canvas").Canvas2DCanvasElement) => void);
+        "__#29@#shadowChangeListener": ChangeListener<import("../..").Shadow>;
+        shadow: import("../..").Shadow | null;
         "__#9@#eventProxy": {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
             readonly fullscreenerror: (listener: TypedEventListener<"fullscreenerror">) => void;
@@ -496,7 +489,7 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
         "__#9@#everyFrame": Updater | null;
-        readonly canvas: Canvas2DCanvasElement;
+        readonly canvas: import("./canvas").Canvas2DCanvasElement;
         everyFrame: Updater | null;
         readonly listen: {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
@@ -605,27 +598,31 @@ export declare function rendersVisualMedia<B extends C2DTransformed, T extends "
             readonly webkittransitionend: (listener: TypedEventListener<"webkittransitionend">) => void;
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
-        scaleByPixelRatio(vector: import("..").Vector2D): import("..").Vector2D;
-        "__#22@#anchor": import("..").Vector2D;
-        "__#22@#angle": import("..").Angle;
-        "__#22@#angularVelocity": import("..").Angle;
-        "__#22@#scale": import("..").Vector2D;
-        "__#22@#velocity": import("..").Vector2D;
+        scaleByPixelRatio(vector: import("../..").Vector2D): import("../..").Vector2D;
+        "__#22@#anchor": import("../..").Vector2D;
+        "__#22@#angle": import("../..").Angle;
+        "__#22@#angularVelocity": import("../..").Angle;
+        "__#22@#scale": import("../..").Vector2D;
+        "__#22@#velocity": import("../..").Vector2D;
         "__#22@#angleChangeListener": ChangeListener<number>;
-        angle: import("..").Angle;
+        angle: import("../..").Angle;
         "__#22@#angularVelocityChangedTime": number;
-        angularVelocity: import("..").Angle;
-        anchor: import("..").Vector2D;
-        "__#22@#anchorChangeListener": ChangeListener<import("../classes/vector2d").Vector2DBase>;
+        angularVelocity: import("../..").Angle;
+        anchor: import("../..").Vector2D;
+        "__#22@#anchorChangeListener": ChangeListener<import("../../classes/vector2d").Vector2DBase>;
         _applyMovement(deltaTime: number): void;
         moveAnchor(x: number, y: number): void;
-        rotateClockwise(angle: import("..").Angle): void;
-        rotateCounterclockwise(angle: import("..").Angle): void;
-        get scale(): import("..").Vector2D;
-        set scale(value: import("..").Vector2D | number);
+        rotateClockwise(angle: import("../..").Angle): void;
+        rotateCounterclockwise(angle: import("../..").Angle): void;
+        get scale(): import("../..").Vector2D;
+        set scale(value: import("../..").Vector2D | number);
         "__#22@#velocityChangedTime": number;
-        velocity: import("..").Vector2D;
+        velocity: import("../..").Vector2D;
     };
     observedAttributes: string[];
     tag: string;
-} & B;
+} & typeof C2DStandaloneTransformed;
+export declare class Canvas2DImage extends Canvas2DImage_base {
+    static get tag(): string;
+}
+export {};

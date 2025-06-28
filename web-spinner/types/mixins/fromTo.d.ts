@@ -1,8 +1,8 @@
 import { Vector2D } from "../classes/vector2d";
-import { Canvas2DBaseRenderable } from "../elements/canvas2d/renderable";
+import { Canvas2DBaseRenderable } from "../elements/visual/renderable";
 export declare function hasTo<B extends typeof Canvas2DBaseRenderable>(Base: B): {
     new (...args: any[]): {
-        "__#23@#to": Vector2D;
+        "__#32@#to": Vector2D;
         /**
          * End point of the element relative to its anchor.
          *
@@ -11,42 +11,24 @@ export declare function hasTo<B extends typeof Canvas2DBaseRenderable>(Base: B):
          */
         to: Vector2D;
         attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
-        "__#19@#anchor": Vector2D;
-        "__#19@#angle": import("..").Angle;
-        "__#19@#angularVelocity": import("..").Angle;
-        "__#19@#scale": Vector2D;
-        "__#19@#velocity": Vector2D;
-        "__#19@#angleChangeListener": ChangeListener<number>;
-        angle: import("..").Angle;
-        "__#19@#angularVelocityChangedTime": number;
-        angularVelocity: import("..").Angle;
-        anchor: Vector2D;
-        "__#19@#anchorChangeListener": ChangeListener<import("../classes/vector2d").Vector2DBase>;
-        moveAnchor(x: number, y: number): void;
-        render: ((canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement) => void) & ((canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement) => void);
-        afterRender: ((canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement) => void) & ((canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement) => void);
-        rotateClockwise(angle: import("..").Angle): void;
-        rotateCounterclockwise(angle: import("..").Angle): void;
-        get scale(): Vector2D;
-        set scale(value: Vector2D | number);
-        "__#19@#velocityChangedTime": number;
-        velocity: Vector2D;
-        "__#21@#changedSinceRender": boolean;
-        "__#21@#clickListeners": Set<EventListenerOrEventListenerObject>;
-        "__#21@#localMouse": import("../classes/mouse").MouseData;
-        "__#21@#mouseListeners": Set<EventListenerOrEventListenerObject>;
-        "__#21@#shadow": import("..").Shadow | null;
+        "__#29@#changedSinceRender": boolean;
+        "__#29@#clickListeners": Set<EventListenerOrEventListenerObject>;
+        "__#29@#localMouse": import("../classes/mouse").MouseData;
+        "__#29@#mouseListeners": Set<EventListenerOrEventListenerObject>;
+        "__#29@#shadow": import("..").Shadow | null;
         addEventListener(type: keyof HTMLElementEventMap, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
         renderConicalGradient(context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient): CanvasGradient;
         renderLinearGradient(context: CanvasRenderingContext2D, gradient: import("..").LinearGradient): CanvasGradient;
         renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("..").RadialGradient): CanvasGradient;
         removeEventListener(type: keyof HTMLElementEventMap, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
         readonly changedSinceRender: boolean;
-        "__#21@#handleClick"(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        "__#21@#handleMouse"(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        registerChange<P extends keyof /*elided*/ any, V extends /*elided*/ any[P]>(propertyName: P, newValue: V): void;
-        renderChildren(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        "__#21@#shadowChangeListener": ChangeListener<import("..").Shadow>;
+        "__#29@#handleClick"(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        "__#29@#handleMouse"(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        registerChange<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]): void;
+        render(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        renderChildren(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        afterRender(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        "__#29@#shadowChangeListener": ChangeListener<import("..").Shadow>;
         shadow: import("..").Shadow | null;
         "__#9@#eventProxy": {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
@@ -156,8 +138,7 @@ export declare function hasTo<B extends typeof Canvas2DBaseRenderable>(Base: B):
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
         "__#9@#everyFrame": Updater | null;
-        readonly canvas: import("../elements/canvas2d/canvas").Canvas2DCanvasElement;
-        createChild<E extends typeof import("../elements/canvas2d/element").Canvas2DElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
+        readonly canvas: import("../elements/visual/canvas").Canvas2DCanvasElement;
         everyFrame: Updater | null;
         readonly listen: {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
@@ -267,6 +248,7 @@ export declare function hasTo<B extends typeof Canvas2DBaseRenderable>(Base: B):
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
         scaleByPixelRatio(vector: Vector2D): Vector2D;
+        createChild<E extends typeof import("../elements/mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
         accessKey: string;
         readonly accessKeyLabel: string;
         autocapitalize: string;
@@ -603,7 +585,7 @@ export declare function hasTo<B extends typeof Canvas2DBaseRenderable>(Base: B):
 } & B;
 export declare function hasFrom<B extends typeof Canvas2DBaseRenderable>(Base: B): {
     new (...args: any[]): {
-        "__#24@#from": Vector2D;
+        "__#33@#from": Vector2D;
         /**
          * Starting point of the element relative to its anchor.
          *
@@ -612,24 +594,24 @@ export declare function hasFrom<B extends typeof Canvas2DBaseRenderable>(Base: B
          */
         from: Vector2D;
         attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void;
-        "__#21@#changedSinceRender": boolean;
-        "__#21@#clickListeners": Set<EventListenerOrEventListenerObject>;
-        "__#21@#localMouse": import("../classes/mouse").MouseData;
-        "__#21@#mouseListeners": Set<EventListenerOrEventListenerObject>;
-        "__#21@#shadow": import("..").Shadow | null;
+        "__#29@#changedSinceRender": boolean;
+        "__#29@#clickListeners": Set<EventListenerOrEventListenerObject>;
+        "__#29@#localMouse": import("../classes/mouse").MouseData;
+        "__#29@#mouseListeners": Set<EventListenerOrEventListenerObject>;
+        "__#29@#shadow": import("..").Shadow | null;
         addEventListener(type: keyof HTMLElementEventMap, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
         renderConicalGradient(context: CanvasRenderingContext2D, gradient: import("..").ConicalGradient): CanvasGradient;
         renderLinearGradient(context: CanvasRenderingContext2D, gradient: import("..").LinearGradient): CanvasGradient;
         renderRadialGradient(context: CanvasRenderingContext2D, gradient: import("..").RadialGradient): CanvasGradient;
         removeEventListener(type: keyof HTMLElementEventMap, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
         readonly changedSinceRender: boolean;
-        "__#21@#handleClick"(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        "__#21@#handleMouse"(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        registerChange<P extends keyof /*elided*/ any, V extends /*elided*/ any[P]>(propertyName: P, newValue: V): void;
-        render(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        renderChildren(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        afterRender(canvas2D: import("../elements/canvas2d/canvas").Canvas2DCanvasElement): void;
-        "__#21@#shadowChangeListener": ChangeListener<import("..").Shadow>;
+        "__#29@#handleClick"(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        "__#29@#handleMouse"(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        registerChange<P extends keyof /*elided*/ any>(propertyName: P, newValue: /*elided*/ any[P]): void;
+        render(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        renderChildren(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        afterRender(canvas2D: import("../elements/visual/canvas").Canvas2DCanvasElement): void;
+        "__#29@#shadowChangeListener": ChangeListener<import("..").Shadow>;
         shadow: import("..").Shadow | null;
         "__#9@#eventProxy": {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
@@ -739,8 +721,7 @@ export declare function hasFrom<B extends typeof Canvas2DBaseRenderable>(Base: B
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
         "__#9@#everyFrame": Updater | null;
-        readonly canvas: import("../elements/canvas2d/canvas").Canvas2DCanvasElement;
-        createChild<E extends typeof import("../elements/canvas2d/element").Canvas2DElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
+        readonly canvas: import("../elements/visual/canvas").Canvas2DCanvasElement;
         everyFrame: Updater | null;
         readonly listen: {
             readonly fullscreenchange: (listener: TypedEventListener<"fullscreenchange">) => void;
@@ -850,6 +831,7 @@ export declare function hasFrom<B extends typeof Canvas2DBaseRenderable>(Base: B
             readonly wheel: (listener: TypedEventListener<"wheel">) => void;
         };
         scaleByPixelRatio(vector: Vector2D): Vector2D;
+        createChild<E extends typeof import("../elements/mixable").CustomHTMLElement>(ElementClass: E, options?: Partial<Writeable<InstanceType<E>>> | undefined): InstanceType<E>;
         accessKey: string;
         readonly accessKeyLabel: string;
         autocapitalize: string;

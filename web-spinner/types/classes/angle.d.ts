@@ -33,6 +33,8 @@ export declare class Angle extends State<number> implements AngleConverter {
         grad: number;
         turn: number;
     };
+    get value(): number;
+    set value(value: number);
     static get zero(): Angle;
 }
 export {};
